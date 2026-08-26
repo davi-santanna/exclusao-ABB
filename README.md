@@ -5,8 +5,8 @@ Implemente a função TNoA *exclui(TNoA *raiz, int chave)  que recebe um ponteir
 Use o arquivo fornecido nesse exercício, pois ele já contém o tratamento de entrada e saída. 
 
 #### Entrada: 
-- árvore a ser percorrida. Os nós da árvore devem ser informados separados por traço, na ordem em que devem ser inseridos na árvore (o esqueleto fornecido já realiza a inserção). Os valores dos nós devem ser informados separados por um traço, sem espaço em branco entre o valor do nó e o traço.
-- valor inteiro representando a chave do nó a ser excluído da árvore
+- Valores dos nós da árvore a ser percorrida. Os valores dos nós da árvore devem ser informados separados por traço, na ordem em que devem ser inseridos na árvore (o esqueleto fornecido já realiza a inserção). Na string de entrada, não pode haver espaço em branco entre o valor do nó e o traço que o separa do valor do próximo nó.
+- Valor inteiro representando a chave do nó a ser excluído da árvore
 
 #### Saída:
 - árvore alterada
