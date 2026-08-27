@@ -8,10 +8,37 @@ typedef struct sNoA {
     struct sNoA *dir;
 } TNoA;
 
+TNoA * remove(TNoA*ant, TNoA*aux,int chave){
+    if (aux->chave > chave) remove(ant,aux->dir, chave);
+    else remove(ant,aux->esq,chave);
+    if(aux == chave){
+        //caso FOLHA:
+        if(aux->dir == NULL && aux->esq == NULL){
+            if(ant->dir->chave == chave && ant->esq->chave != chave){
+                free(aux);
+                ant->dir == NULL;
+            }
+        }
+        else if(aux->dir == NULL && aux->esq == NULL){
+            if(ant->dir->chave != chave && ant->esq->chave == chave){
+                free(aux);
+                ant->esq == NULL;
+            }
+        }
+        //caso FILHO UNICO:
+
+    }
+}
+
 TNoA *exclui(TNoA *raiz, int chave) {
-    //TODO: Implementar essa função
-    //Ela recebe a raiz da árvore e a chave a ser excluída
-    //Ela retorna ponteiro para a nova raiz
+
+    if (raiz->chave == chave ){
+        free( raiz);
+        return NULL;
+    }
+    TNoA*aux = raiz;
+
+
 }
 
 void imprime(TNoA *nodo, int tab) {
