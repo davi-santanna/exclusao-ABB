@@ -8,37 +8,39 @@ typedef struct sNoA {
     struct sNoA *dir;
 } TNoA;
 
-TNoA * remove(TNoA*ant, TNoA*aux,int chave){
-    if (aux->chave > chave) remove(ant,aux->dir, chave);
-    else remove(ant,aux->esq,chave);
-    if(aux == chave){
-        //caso FOLHA:
-        if(aux->dir == NULL && aux->esq == NULL){
-            if(ant->dir->chave == chave && ant->esq->chave != chave){
-                free(aux);
-                ant->dir == NULL;
-            }
-        }
-        else if(aux->dir == NULL && aux->esq == NULL){
-            if(ant->dir->chave != chave && ant->esq->chave == chave){
-                free(aux);
-                ant->esq == NULL;
-            }
-        }
-        //caso FILHO UNICO:
 
-    }
-}
 
 TNoA *exclui(TNoA *raiz, int chave) {
 
-    if (raiz->chave == chave ){
-        free( raiz);
-        return NULL;
+    if(!raiz) return NULL;
+    else if(raiz->chave < chave){
+        raiz->dir = exclui(raiz->dir, chave);
+        return raiz;}
+    else if(raiz->chave > chave){
+        raiz->esq = exclui(raiz->esq, chave);
+        return raiz;
+   }
+    TNoA*temp = raiz;
+    if(!raiz->dir&&!raiz->esq){
+        raiz = NULL;
+        free(temp);
     }
-    TNoA*aux = raiz;
+    else if(!raiz->dir){
+        raiz = raiz->esq;
+        free(temp);
+    }
+    else if(!raiz->esq){
+        raiz = raiz->dir;
+        free(temp);
+    }
+    else{
+        TNoA* f= raiz->esq;
+        while(f->dir) f=f->dir;
+        raiz->chave = f->chave;
+        raiz->esq = exclui(raiz->esq, f->chave);
+    }
 
-
+    return raiz;
 }
 
 void imprime(TNoA *nodo, int tab) {
